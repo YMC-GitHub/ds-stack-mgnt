@@ -1,9 +1,9 @@
-﻿#!/bin/bash
+﻿#!/bin/sh
 
-basepath=$(cd `dirname $0`; pwd)
-source ${basepath}/conf.sh
-source ${basepath}/lang.sh
-source ${basepath}/swarm.sh
+THIS_FILE_PATH=$(cd `dirname $0`; pwd)
+source ${THIS_FILE_PATH}/conf.sh
+source ${THIS_FILE_PATH}/lang.sh
+source ${THIS_FILE_PATH}/sh-lib-swarm.sh
 
 
 # 建虚拟机
@@ -34,7 +34,7 @@ ls_sw_node $my_manager_vms_name$MANAGER_START_INDEX
 # 连管理机
 now_step=step_20
 echo "# $now_step -> ${lang_steps[$now_step]}"
-#link_sw_manager $my_manager_vms_name$MANAGER_START_INDEX 
+#link_sw_manager $my_manager_vms_name$MANAGER_START_INDEX
 # 登录仓库
 now_step=step_21
 echo "# $now_step -> ${lang_steps[$now_step]}"

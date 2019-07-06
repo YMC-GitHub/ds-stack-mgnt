@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+﻿#!/bin/sh
 echo 'b--->: ini var'
 # 主机的名字前缀
 my_manager_vms_name=myvm

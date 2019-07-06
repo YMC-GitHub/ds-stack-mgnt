@@ -1,7 +1,8 @@
-# quickly start stack
+# ds-stack-mgnt
 
 ##### \#**desc**
-create or start machines , set manager or worker host ... . one key one do!
+
+curd docker swarm stack ! eg:create or start machines , set manager or worker host. one key one do!
 
 ##### \#**conf**
 define your configuration for  sh's files  in `conf.sh`:
@@ -23,7 +24,7 @@ user_p=xxx
 # the the prefix of stack app
 my_app_name_prefix=getstartedlab
 
-# the path of then docker-compose.yml file  of the stack in your manager host machine 
+# the path of then docker-compose.yml file  of the stack in your manager host machine
 my_stack_compose_file_dir=/ymc/bin/stack-quick-start
 ```
 

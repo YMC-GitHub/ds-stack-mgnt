@@ -1,7 +1,10 @@
-#!/bin/bash
-basepath=$(cd `dirname $0`; pwd)
-source ${basepath}/conf.sh
-source ${basepath}/functions.sh
+#!/bin/sh
+THIS_FILE_PATH=$(cd `dirname $0`; pwd)
+
+###
+# deps
+###
+#source ${THIS_FILE_PATH}/sh-lib-vm.sh
 
 ##########
 #建虚拟机
@@ -30,7 +33,7 @@ set_sw_manager(){
     --listen-addr $(docker-machine ip $my_manager_vms_name$MANAGER_START_INDEX):2377"
 local d=$(($MANAGER_START_INDEX + 1))
 if [ $d -lt "$MANAGER" ]; then MANAGER_START_INDEX=$MANAGER ;fi
-for i in $(seq $($MANAGER_START_INDEX) $MANAGER); do 
+for i in $(seq $($MANAGER_START_INDEX) $MANAGER); do
     docker-machine ssh $my_manager_vms_name$i \
     "docker swarm join \
     --manager \
@@ -43,7 +46,7 @@ done
 #docker-machine ssh myvm2 "docker swarm join --token SWMTKN-1-2jhcfueglcmknowqnaus2gucxtsxeedga7jcw7wfpf7ocpo32q-bhh7fj430jk6t7z0oh6bxofjs 192.168.99.101:2377"
 #docker-machine ssh myvm3 "docker swarm join --token SWMTKN-1-2jhcfueglcmknowqnaus2gucxtsxeedga7jcw7wfpf7ocpo32q-bhh7fj430jk6t7z0oh6bxofjs 192.168.99.101:2377"
 set_sw_worker(){
-    for i in $(seq $WORKER_START_INDEX $WORKER); do 
+    for i in $(seq $WORKER_START_INDEX $WORKER); do
     docker-machine ssh $my_worker_vms_name$i \
     "docker swarm join \
     --listen-addr $(docker-machine ip $my_worker_vms_name$i):2377 \
@@ -66,7 +69,7 @@ ls_sw_node(){
 leave_sw(){
     for i in $(seq $WORKER_START_INDEX $WORKER); do docker-machine ssh $my_worker_vms_name$i "docker swarm leave"; done
     for i in $(seq $MANAGER_START_INDEX $MANAGER); do docker-machine ssh $my_manager_vms_name$i "docker swarm leave -f"; done
-    
+
 }
 
 # 连管理机
@@ -74,7 +77,7 @@ leave_sw(){
 # docker-machine ls
 #docker-machine ssh myvm1
 link_sw_manager(){
-   docker-machine ssh ${1} 
+   docker-machine ssh ${1}
 }
 
 ##########

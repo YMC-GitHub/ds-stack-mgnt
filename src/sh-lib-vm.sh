@@ -1,7 +1,6 @@
-﻿#!/bin/bash
+﻿#!/bin/sh
 
-basepath=$(cd `dirname $0`; pwd)
-source ${basepath}/conf.sh
+THIS_FILE_PATH=$(cd `dirname $0`; pwd)
 
 ####################
 # operation for vm with docker-machine
@@ -10,9 +9,9 @@ source ${basepath}/conf.sh
 create_vm(){
     #https://docs.docker.com/machine/reference/ls/#formatting
     local HAS_VM=$(docker-machine ls --filter "name=${1}" --format "{{.Name}}")
-    
+
     if [ $HAS_VM != ${1} ]
-    then 
+    then
         echo "b---->:create vm ${1}"
          docker-machine create --driver virtualbox ${1}
         echo "e---->:create vm ${1}"
@@ -21,12 +20,12 @@ create_vm(){
 start_vm(){
     local VM_SYTATE=$(docker-machine ls --filter "name=${1}" --format "{{.State}}")
     if [ $VM_SYTATE != "Running" ]
-    then 
+    then
         echo "b---->:start vm ${1}"
         my_vm_name=${1}
         docker-machine start $my_vm_name
         echo "e---->:start vm ${1}"
-    fi    
+    fi
 }
 connect_vm(){
     local VM_IS_ACTIVE=$(docker-machine active)
@@ -34,7 +33,7 @@ connect_vm(){
 
     # change [ $VM_IS_ACTIVE != ${1} ] to fix:"[: =: unary operator expected"
     if [[ $VM_IS_ACTIVE != ${1} ]]
-    then 
+    then
         echo "b---->:connect to vm ${1} by exporting env for docker-machine"
         my_vm_name=${1}
         docker-machine env $my_vm_name

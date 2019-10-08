@@ -1,7 +1,7 @@
 # quickly start stack
 
 ##### \#**desc**
-create or start mqchines , set manager or worker host ... . one key one do!
+create or start machines , set manager or worker host ... . one key one do!
 
 ##### \#**conf**
 define your configuration for  sh's files  in `conf.sh`:
@@ -45,33 +45,33 @@ $ ./start.sh
 #restart you stack
 ######
 # way 1:
-$ cd /to/your/start.sh/path
+$ cd /to/your/restart.sh/path
 $ bash ./restart.sh
 
 # way 2:
-$ cd /to/your/start.sh/path
+$ cd /to/your/restart.sh/path
 $ ./restart.sh
 
 ######
 #stop you stack
 ######
 # way 1:
-$ cd /to/your/start.sh/path
+$ cd /to/your/stop.sh/path
 $ bash ./stop.sh
 
 # way 2:
-$ cd /to/your/start.sh/path
+$ cd /to/your/stop.sh/path
 $ ./stop.sh
 
 ######
 #clear you stack
 ######
 # way 1:
-$ cd /to/your/start.sh/path
+$ cd /to/your/clear.sh/path
 $ bash ./clear.sh
 
 # way 2:
-$ cd /to/your/start.sh/path
+$ cd /to/your/clear.sh/path
 $ ./clear.sh
 
 ```
